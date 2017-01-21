@@ -95,27 +95,6 @@ public class TextureLoader : SingletonMonoBehaviour<TextureLoader> {
 		}
 	}
 
-	private void readTextureFileNames() {
-		if(!string.IsNullOrEmpty(mLocalStorageDirPath) && System.IO.Directory.Exists (mLocalStorageDirPath)) {
-			foreach(FileInfo file in GetFilesWithExtensions(
-				new DirectoryInfo(mLocalStorageDirPath), 
-				new string[]{ WorkshopUtils.PNG_EXTENSION, WorkshopUtils.JPEG_EXTENSION })) {
-
-				// Add each file name to the list of names, which we store.
-				mTextureFileNames.Add(file.Name);
-			}
-		}
-		else {
-			Debug.Log("mLocalStorageDirPath doesn't exist or the string is empty or null");
-		}
-	}
-	
-	// Gets the list of files in the directory by extention and filters for our specified ones (images)
-	private IEnumerable<FileInfo> GetFilesWithExtensions (this DirectoryInfo dir, params string[] extensions) {
-		IEnumerable<FileInfo> files = dir.GetFiles();
-		return files.Where(f => extensions.Contains(f.Extension));
-	}
-
 	public bool isFinishedLoadingFirstTexture() {
 		return mFinishedFirstTexture;
 	}
