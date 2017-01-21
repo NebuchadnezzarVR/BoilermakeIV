@@ -9,7 +9,7 @@ public class PicPane : MonoBehaviour {
 // image from the documentation site.  It is then applied as the
 // texture on the GameObject.
 
-    public string url = "https://docs.unity3d.com/uploads/Main/ShadowIntro.png"; //Will be obsolete as soon as ImageMode is implemented
+    public string url = "https://docs.unity3d.com/uploads/Main/ShadowIntro.png"; //Will be depreciated as soon as ImageMode is implemented
     public ImageModel myModel;
 
     //Currently incative. Will implement when movement becomes a possibility
