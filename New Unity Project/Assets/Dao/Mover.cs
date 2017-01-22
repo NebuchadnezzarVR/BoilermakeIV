@@ -18,7 +18,7 @@ public class Mover : MonoBehaviour {
 
     public PicPane mainPane;
     public GameObject infoPane;
-    public List<string> allModels;
+    public List<ImageModel> allModels;
     public List<ImageModel> activeModels;
     const int ACTIVEPANES = 7;
     int activeTop;
@@ -26,13 +26,13 @@ public class Mover : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //to implement: get list of models
-        allModels = ImageModelDao.getUrls();
+        allModels = ImageModelDao.Instance.GetImageModels();
         
         mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
         Debug.Assert(mainPane != null, "mainpane failed, bitch");
 
         System.Random r = new System.Random();
-        mainPane.setImageModel(new ImageModel() { ImageUrl = allModels[r.Next() % allModels.Count] });
+        mainPane.setImageModel(allModels[r.Next() % allModels.Count]);
 
 
         infoPane = GameObject.FindWithTag("InfoPane");
@@ -51,11 +51,7 @@ public class Mover : MonoBehaviour {
         {
             if((activeTop-i) < allModels.Count)
             {
-                activeModels[activeModels.Count - i] = new ImageModel()
-                {
-                    ImageUrl
-                    = allModels[allModels.Count - i]
-                };
+	            activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
 
             }
             //activeModels[allModels.Count-i].
