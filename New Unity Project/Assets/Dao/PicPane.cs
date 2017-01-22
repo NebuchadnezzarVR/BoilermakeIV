@@ -82,8 +82,8 @@ public class PicPane : MonoBehaviour {
         float h;
         if(aspectRatio > 1)
         {
-            w = aspectRatio;
-            h = 1;
+            w = 1;
+            h = 1 / aspectRatio;
         }
         else
         {
