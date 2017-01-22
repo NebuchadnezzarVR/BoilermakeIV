@@ -27,13 +27,16 @@ public class Mover : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //to implement: get list of models
-        allModels = ImageModelDao.getImageModels();
+
+        allModels = ImageModelDao.Instance.GetImageModels();
+
         
         mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
         Debug.Assert(mainPane != null, "mainpane failed, bitch");
 
         System.Random r = new System.Random();
         mainPane.setImageModel(allModels[r.Next() % allModels.Count]);
+
         allModels.Sort((x, y) => x.TimeTaken.CompareTo(y.TimeTaken));
 
         setInitalActiveModels();
@@ -60,7 +63,10 @@ public class Mover : MonoBehaviour {
         {
             if((activeTop-i) < allModels.Count)
             {
+
                 activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
+
+
 
             }
             
