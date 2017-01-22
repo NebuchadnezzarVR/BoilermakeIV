@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Dao;
+//using Assets.Dao;
 //using System.Diagnostics;
 
 public class Mover : MonoBehaviour {
@@ -26,7 +26,7 @@ public class Mover : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //to implement: get list of models
-        allModels = ImageModelDao.Instnace.GetImageModels();
+        //allModels = ImageModelDao.Instnace.GetImageModels();
         
         mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
         Debug.Assert(mainPane != null, "mainpane failed, bitch");
