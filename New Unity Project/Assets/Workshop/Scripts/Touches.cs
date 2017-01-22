@@ -31,6 +31,14 @@ public class Touches : MonoBehaviour {
         {
             UnityEngine.VR.InputTracking.Recenter();
         }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            move.nextPic();
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            move.prevPic();
+        }
     }
 	
 	// Update is called once per frame
