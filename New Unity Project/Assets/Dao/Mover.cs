@@ -31,6 +31,10 @@ public class Mover : MonoBehaviour {
 
         allModels = ImageModelDao.Instance.GetImageModels();
         
+        if(allModels.Count < 10)
+        {
+            GameObject.FindGameObjectWithTag("InfoPane").GetComponent<Renderer>().material.SetColor("_Color", Color.magenta);
+        }
         mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
         Debug.Assert(mainPane != null, "mainpane failed, bitch");
 
