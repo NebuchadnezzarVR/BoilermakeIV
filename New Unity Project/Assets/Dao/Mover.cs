@@ -52,7 +52,6 @@ public class Mover : MonoBehaviour {
         for(int i = 1; i < NUMACTIVEPANES; i++)
         {
             /*GameObject newPanel = new GameObject();
-            newPanel.name = "Panel" + i;
             newPanel.AddComponent(typeof)
             newPanel.AddComponent(typeof(Renderer));
             newPanel.AddComponent(typeof(BoxCollider));
@@ -62,7 +61,11 @@ public class Mover : MonoBehaviour {
                 comp.setImageModel(activeModels[i]);*/
             GameObject newPanel = Instantiate(GameObject.FindGameObjectWithTag("MainPane"));
             (newPanel.GetComponent(typeof(PicPane)) as PicPane).moveToPos(i);
-            (newPanel.GetComponent(typeof(PicPane)) as PicPane).setImageModel(activeModels[i]);
+            newPanel.name = "Panel" + i;
+            if (activeModels.Count > i)
+                (newPanel.GetComponent(typeof(PicPane)) as PicPane).setImageModel(activeModels[i]);
+            else
+                break;
             activePanes.Add((newPanel.GetComponent(typeof(PicPane)) as PicPane));
             //activePanes.Count-1 - i].setImageModel(activeModels[activePanes.Count-1 - i]);
             //activePanes[activePanes.Count - 1 - i].moveToPos(activePanes.Count - 1- i);
@@ -90,10 +93,10 @@ public class Mover : MonoBehaviour {
         {
             //Debug.Log(activeBott + " x " + activeTop+" xx "+i);
             //Debug.Log("Sums: " + i + (allModels.Count - (NUMACTIVEPANES / 2)));
-            if (i+(allModels.Count-(NUMACTIVEPANES/2)) < allModels.Count)
+            if (i+(allModels.Count-(NUMACTIVEPANES/2))-1 < allModels.Count)
             {
                 //Debug.Log(allModels[i + (allModels.Count - (NUMACTIVEPANES / 2))].ToString());
-                activeModels.Add(allModels[i + (allModels.Count - (NUMACTIVEPANES / 2))]);
+                activeModels.Add(allModels[i + (allModels.Count - (NUMACTIVEPANES / 2))-1]);
                 //Debug.Log("added to active list");
             }
             
