@@ -12,10 +12,6 @@ public class Touches : MonoBehaviour {
     {
         OVRTouchpad.Create();
         OVRTouchpad.TouchHandler += HandleTouchHandler;
-        allModels = ImageModelDao.Instance.GetImageModels();
-
-        mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
-        Debug.Assert(mainPane != null, "mainpane failed, bitch");
     }
 
     void HandleTouchHandler (object sender, System.EventArgs e)
@@ -23,12 +19,7 @@ public class Touches : MonoBehaviour {
         OVRTouchpad.TouchArgs touchArgs = (OVRTouchpad.TouchArgs)e;
         if (touchArgs.TouchType == OVRTouchpad.TouchEvent.SingleTap)
         {
-            System.Random r = new System.Random();
-            mainPane.setImageModel(allModels[r.Next() % allModels.Count]);
-
-
-            infoPane = GameObject.FindWithTag("InfoPane");
-            mainPane.loadImage();
+            
         }
     }
 	
