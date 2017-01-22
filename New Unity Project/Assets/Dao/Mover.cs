@@ -135,7 +135,7 @@ public class Mover : MonoBehaviour {
         {
             if (move != null)
             {
-                move.moveUp();
+                move.moveDown();
             }
         }
 
