@@ -45,12 +45,26 @@ public class Mover : MonoBehaviour {
         
         setInitalActiveModels();
 
-        for(int i = NUMACTIVEPANES; i > 0; i--)
+        for(int i = 1; i < NUMACTIVEPANES; i++)
         {
-            activePanes.Add(gameObject.AddComponent(typeof(PicPane)) as PicPane);
-            activePanes[activePanes.Count-1].setImageModel(activeModels[activePanes.Count-1]);
-            activePanes[activePanes.Count - 1].moveToPos(activePanes.Count - 1- i);
-            Instantiate(activePanes[activePanes.Count - 1]);
+            /*GameObject newPanel = new GameObject();
+            newPanel.name = "Panel" + i;
+            newPanel.AddComponent(typeof)
+            newPanel.AddComponent(typeof(Renderer));
+            newPanel.AddComponent(typeof(BoxCollider));
+            newPanel.AddComponent(typeof(MeshFilter));
+            var comp = newPanel.AddComponent(typeof(PicPane)) as PicPane;
+            if(activeModels[i] != null)
+                comp.setImageModel(activeModels[i]);*/
+            GameObject newPanel = Instantiate(GameObject.FindGameObjectWithTag("MainPane"));
+            (newPanel.GetComponent(typeof(PicPane)) as PicPane).moveToPos(i);
+            (newPanel.GetComponent(typeof(PicPane)) as PicPane).setImageModel(activeModels[i]);
+            activePanes.Add((newPanel.GetComponent(typeof(PicPane)) as PicPane));
+            //activePanes.Count-1 - i].setImageModel(activeModels[activePanes.Count-1 - i]);
+            //activePanes[activePanes.Count - 1 - i].moveToPos(activePanes.Count - 1- i);
+            
+
+            //Instantiate(newPanel);
             Debug.Log("added " + i);
         }
 
@@ -66,7 +80,7 @@ public class Mover : MonoBehaviour {
     {
         Debug.Log("allModels Count: "+allModels.Count+ " stuff: "+ NUMACTIVEPANES/2);
         
-        activeTop = allModels.Count+(NUMACTIVEPANES/2);
+        activeTop = allModels.Count+(NUMACTIVEPANES/2)+1;
         activeBott = allModels.Count - (NUMACTIVEPANES/2);
         for (int i = 0; i < NUMACTIVEPANES; i++)
         {
