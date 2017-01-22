@@ -15,6 +15,7 @@ public class Mover : MonoBehaviour {
     //                      [t] <
     //                      [t]
     //
+
     public PicPane mainPane;
     public GameObject infoPane;
     public List<ImageModel> allModels;
@@ -30,7 +31,7 @@ public class Mover : MonoBehaviour {
         mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
         Debug.Assert(mainPane != null, "mainpane failed, bitch");
         infoPane = GameObject.FindWithTag("InfoPane");
-        //mainPane.loadImage();
+        mainPane.loadImage();
     }
 	
 	// Update is called once per frame
@@ -41,6 +42,15 @@ public class Mover : MonoBehaviour {
     {
         int activeTop = allModels.Count+(ACTIVEPANES/2);
         int activeBottom = allModels.Count - (ACTIVEPANES / 2);
+        for (int i = 0; i < ACTIVEPANES; i++)
+        {
+            if((activeTop-i) < allModels.Count)
+            {
+                activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
+
+            }
+            activeModels[allModels.Count-i].
+        }
         
     }
 
