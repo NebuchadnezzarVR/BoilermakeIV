@@ -39,7 +39,7 @@ public class Mover : MonoBehaviour {
 
         allModels.Sort((x, y) => x.TimeTaken.CompareTo(y.TimeTaken));
         int n = r.Next() % allModels.Count;
-        Debug.Log(n);
+        Debug.Log("Pic ID: "+n);
         mainPane.setImageModel(allModels[n]);
 
         setInitalActiveModels();
@@ -63,13 +63,15 @@ public class Mover : MonoBehaviour {
 	}
     void setInitalActiveModels()
     {
-        int activeTop = allModels.Count+(NUMACTIVEPANES/2);
-        int activeBottom = allModels.Count - (NUMACTIVEPANES / 2);
+        Debug.Log("allModels Count: "+allModels.Count+ " stuff: "+ NUMACTIVEPANES/2);
+        activeTop = allModels.Count+(NUMACTIVEPANES/2);
+        activeBott = allModels.Count - (NUMACTIVEPANES/2);
         for (int i = 0; i < NUMACTIVEPANES; i++)
         {
-            if((activeTop-i) < allModels.Count)
+            Debug.Log(activeBott + " x " + activeTop+" xx "+i);
+            Debug.Log("Sums: "+i + (allModels.Count - (NUMACTIVEPANES / 2)));
+            if (i+(allModels.Count-(NUMACTIVEPANES/2)) < allModels.Count)
             {
-
                 activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
                 Debug.Log("added to active list");
             }
@@ -80,10 +82,18 @@ public class Mover : MonoBehaviour {
 
     void populateActive()
     {
-        //to be implemented
+        //infoPane = GameObject.FindGameObjectWithTag("InfoPane").GetComponent(typeof(InfoPane)) as InfoPane;
+        //infoPane.setImageModel(activeModels[activeModels.Count/2]);
 
     }
+    public void nextPic()
+    {
 
+    }
+    public void prevPic()
+    {
+
+    }
     public void newPic()
     {
         mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
