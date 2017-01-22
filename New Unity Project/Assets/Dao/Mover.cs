@@ -44,7 +44,10 @@ public class Mover : MonoBehaviour {
         for(int i = NUMACTIVEPANES; i > 0; i--)
         {
             activePanes.Add(new PicPane());
-            //activePanes[i].
+            activePanes[activePanes.Count-1].setImageModel(activeModels[activePanes.Count-1]);
+            activePanes[activePanes.Count - 1].moveToPos(activePanes.Count - 1);
+            Instantiate(activePanes[activePanes.Count - 1]);
+            Debug.Log("added " + i);
         }
 
         infoPane = GameObject.FindWithTag("InfoPane");
@@ -64,7 +67,7 @@ public class Mover : MonoBehaviour {
             if((activeTop-i) < allModels.Count)
             {
 
-                activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
+                //activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
 
 
 

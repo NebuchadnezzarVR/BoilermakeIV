@@ -67,6 +67,10 @@ public class PicPane : MonoBehaviour {
     }
     public void setImageModel(ImageModel i)
     {
+        if(i == null)
+        {
+            return;
+        }
         myModel = i;
         url = i.ImageUrl;
         loadImage();
