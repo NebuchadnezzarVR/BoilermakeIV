@@ -2,6 +2,7 @@
 using System.Linq;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
 
 namespace Assets.Dao
 {
@@ -34,17 +35,25 @@ namespace Assets.Dao
 			{
 				var model = new ImageModel();
 
-				model.Username = document["User"]["UserName"].AsString;
-				model.FullName = document["User"]["FullName"].AsString;
-				model.TimeTaken = document["TakenAt"].ToUniversalTime();
-				model.ImageUrl = document["Images"].AsBsonArray.First().AsString;
-				model.Caption = document["Caption"]["Text"].AsString;
-				model.Likes = document["Likers"].AsBsonArray.Count;
-				model.Comments = int.Parse(document["CommentsCount"].AsString);
-				model.TaggedUsers = document["Tags"].AsBsonArray.Select(users => users["User"]["Username"].AsString).ToList();
-				model.Likers = document["Likers"].AsBsonArray.Select(likers => likers["Username"].AsString).ToList();
+                try
+                {
 
-				list.Add(model);
+                    model.Username = document["User"]["UserName"].AsString;
+                    model.FullName = document["User"]["FullName"].AsString;
+                    model.TimeTaken = document["TakenAt"].ToUniversalTime();
+                    model.ImageUrl = document["Images"].AsBsonArray.First()["Url"].AsString;
+                    model.Caption = document["Caption"]["Text"].AsString;
+                    model.Likes = document["Likers"].AsBsonArray.Count;
+                    model.Comments = int.Parse(document["CommentsCount"].AsString);
+                    model.TaggedUsers = document["Tags"].AsBsonArray.Select(users => users["User"]["Username"].AsString).ToList();
+                    model.Likers = document["Likers"].AsBsonArray.Select(likers => likers["Username"].AsString).ToList();
+
+                    list.Add(model);
+                }
+                catch (System.Exception e)
+                {
+                    Console.WriteLine(e.Message + " " + e.Source);
+                }
 			}
 
 			return list;

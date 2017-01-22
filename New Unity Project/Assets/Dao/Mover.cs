@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Dao;
 //using System.Diagnostics;
 
 public class Mover : MonoBehaviour {
@@ -24,9 +25,11 @@ public class Mover : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //to implement: get list of models
-        mainPane = GameObject.FindWithTag("InfoPane").GetComponent(typeof(PicPane)) as PicPane;
-        Debug.Assert(mainPane != null);
-        infoPane = GameObject.FindWithTag("MainPane");
+        allModels = ImageModelDao.Instnace.GetImageModels();
+       
+        mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
+        Debug.Assert(mainPane != null, "mainpane failed, bitch");
+        infoPane = GameObject.FindWithTag("InfoPane");
         //mainPane.loadImage();
     }
 	

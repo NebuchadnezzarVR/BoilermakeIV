@@ -23,6 +23,8 @@ public class PicPane : MonoBehaviour {
 
     public IEnumerator loadImage()
     {
+
+
         Debug.Log("here first you bastard");
         Texture2D tex;
         tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
