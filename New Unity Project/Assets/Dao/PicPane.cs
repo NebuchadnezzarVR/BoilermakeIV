@@ -21,7 +21,7 @@ public class PicPane : MonoBehaviour {
 
 
     IEnumerator Start() {
-        if (possLocations.Count <= 0)
+        if (possLocations.Count <= 3)
         {
             possLocations.Add(0, new Vector3(-1, ((float)-2.5), -1)); //down four
             possAng.Add(0, 90);
