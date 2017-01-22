@@ -62,7 +62,10 @@ public class Mover : MonoBehaviour {
             GameObject newPanel = Instantiate(GameObject.FindGameObjectWithTag("MainPane"));
             (newPanel.GetComponent(typeof(PicPane)) as PicPane).moveToPos(i);
             newPanel.name = "Panel" + i;
-            (newPanel.GetComponent(typeof(PicPane)) as PicPane).setImageModel(activeModels[i]);
+            if (activeModels.Count > i)
+                (newPanel.GetComponent(typeof(PicPane)) as PicPane).setImageModel(activeModels[i]);
+            else
+                break;
             activePanes.Add((newPanel.GetComponent(typeof(PicPane)) as PicPane));
             //activePanes.Count-1 - i].setImageModel(activeModels[activePanes.Count-1 - i]);
             //activePanes[activePanes.Count - 1 - i].moveToPos(activePanes.Count - 1- i);
