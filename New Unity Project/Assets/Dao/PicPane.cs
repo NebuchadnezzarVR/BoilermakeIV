@@ -30,8 +30,6 @@ public class PicPane : MonoBehaviour {
         yield return www;
         www.LoadImageIntoTexture(tex);
         GetComponent<Renderer>().material.mainTexture = tex;
-        Debug.Log("here you bastard");
-
 
     }
     // Update is called once per frame
