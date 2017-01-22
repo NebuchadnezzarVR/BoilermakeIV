@@ -17,6 +17,7 @@ public class PicPane : MonoBehaviour {
 
     public Transform target;
     public float speed = 5;
+    int currindex = -1;
 
 
     IEnumerator Start() {
@@ -64,14 +65,31 @@ public class PicPane : MonoBehaviour {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
-    void setImageModel(ImageModel i)
+    public void setImageModel(ImageModel i)
     {
         myModel = i;
         url = i.ImageUrl;
         loadImage();
           
     }
+    public void moveUp()
+    {
+        currindex++;
+        target.position = possLocations[currindex + 1];
+        target.eulerAngles = new Vector3(possAng[currindex], 0, 0);
+        if((currindex == possLocations.Count) || (currindex == 0))
+        {
+            
+        }
 
+
+    }
+    public void moveToPos(int i)
+    {
+        target.position = possLocations[i];
+        target.eulerAngles = new Vector3(possAng[i],0,0);
+        currindex = i;
+    }
     public void setActive()
     {
         GameObject infoPane = GameObject.FindWithTag("InfoPane");

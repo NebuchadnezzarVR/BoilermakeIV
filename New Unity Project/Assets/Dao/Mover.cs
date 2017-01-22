@@ -27,9 +27,14 @@ public class Mover : MonoBehaviour {
 	void Start () {
         //to implement: get list of models
         allModels = ImageModelDao.Instnace.GetImageModels();
-       
+        
         mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
         Debug.Assert(mainPane != null, "mainpane failed, bitch");
+
+        System.Random r = new System.Random();
+        mainPane.setImageModel(allModels[r.Next()%allModels.Count]);
+
+
         infoPane = GameObject.FindWithTag("InfoPane");
         mainPane.loadImage();
     }
@@ -49,7 +54,7 @@ public class Mover : MonoBehaviour {
                 activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
 
             }
-            activeModels[allModels.Count-i].
+            //activeModels[allModels.Count-i].
         }
         
     }
