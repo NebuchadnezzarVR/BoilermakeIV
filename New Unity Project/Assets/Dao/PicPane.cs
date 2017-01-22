@@ -121,14 +121,22 @@ public class PicPane : MonoBehaviour {
     public void moveUp()
     {
         currindex++;
-        target.position = possLocations[currindex + 1];
+        target.position = possLocations[currindex];
         target.eulerAngles = new Vector3(possAng[currindex], 0, 180);
         if((currindex == possLocations.Count) || (currindex == 0))
         {
-            
+            Destroy(gameObject);
         }
-
-
+    }
+    public void moveDown()
+    {
+        currindex--;
+        target.position = possLocations[currindex];
+        target.eulerAngles = new Vector3(possAng[currindex], 0, 180);
+        if ((currindex == possLocations.Count) || (currindex == 0))
+        {
+            Destroy(gameObject);
+        }
     }
     public void moveToPos(int i)
     {
