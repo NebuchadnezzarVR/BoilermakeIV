@@ -71,9 +71,7 @@ public class Mover : MonoBehaviour {
             {
 
                 activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
-
-
-
+                Debug.Log("added to active list");
             }
             
         }
