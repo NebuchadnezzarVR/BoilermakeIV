@@ -59,7 +59,11 @@ public class Mover : MonoBehaviour {
             var comp = newPanel.AddComponent(typeof(PicPane)) as PicPane;
             if(activeModels[i] != null)
                 comp.setImageModel(activeModels[i]);*/
+
+            (GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(Renderer)) as Renderer).enabled = true;
+
             GameObject newPanel = Instantiate(GameObject.FindGameObjectWithTag("MainPane"));
+            
             (newPanel.GetComponent(typeof(PicPane)) as PicPane).moveToPos(i);
             newPanel.name = "Panel" + i;
             if (activeModels.Count > i)
@@ -69,14 +73,16 @@ public class Mover : MonoBehaviour {
             activePanes.Add((newPanel.GetComponent(typeof(PicPane)) as PicPane));
             //activePanes.Count-1 - i].setImageModel(activeModels[activePanes.Count-1 - i]);
             //activePanes[activePanes.Count - 1 - i].moveToPos(activePanes.Count - 1- i);
-            
+
 
             //Instantiate(newPanel);
+            (GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(Renderer)) as Renderer).enabled = false;
+
             Debug.Log("added " + i);
         }
-
- 
-        mainPane.loadImage();
+       (GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(Renderer)) as Renderer).enabled = false;
+        //mainPane.enabled = false;
+        //mainPane.loadImage();
     }
 	
 	// Update is called once per frame
@@ -114,10 +120,24 @@ public class Mover : MonoBehaviour {
     }
     public void nextPic()
     {
-
+        foreach (PicPane move in activePanes)
+        {
+            if (move != null)
+            {
+                move.moveUp();
+            }
+        }
+        
     }
     public void prevPic()
     {
+        foreach (PicPane move in activePanes)
+        {
+            if (move != null)
+            {
+                move.moveDown();
+            }
+        }
 
     }
     public void newPic()
