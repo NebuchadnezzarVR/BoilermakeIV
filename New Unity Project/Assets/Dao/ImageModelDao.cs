@@ -247,7 +247,13 @@ class ImageModelDao
 		using (FileStream fs = new FileStream("Assets\\Dao\\store.xml", FileMode.Open))
 		{
 			XmlReader xml = XmlReader.Create(fs);
-			return serializer.Deserialize(xml) as List<ImageModel>;
+			var t = serializer.Deserialize(xml) as List<ImageModel>;
+
+            foreach (var x in t)
+                if (x == null)
+                    t.Remove(x);
+
+            return t;
 		}
 	}
 

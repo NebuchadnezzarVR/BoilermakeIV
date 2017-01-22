@@ -127,6 +127,7 @@ public class PicPane : MonoBehaviour {
     }
     public void moveToPos(int i)
     {
+        Debug.Log("moving to pos: " + i);
         target.position = possLocations[i];
         target.eulerAngles = new Vector3(possAng[i],0,180);
         currindex = i;
