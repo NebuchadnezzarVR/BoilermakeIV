@@ -6,5 +6,5 @@ using System.Collections;
 
 public class WorkshopUtils : MonoBehaviour {
 	public const string PNG_EXTENSION = ".png";
-	public const string JPEG_EXTENSION = ".jpg";
+	public const string JPEG_EXTENSION = ".JPG";
 }
