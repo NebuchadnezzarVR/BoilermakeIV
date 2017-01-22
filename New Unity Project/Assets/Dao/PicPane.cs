@@ -23,25 +23,25 @@ public class PicPane : MonoBehaviour {
     IEnumerator Start() {
         if (possLocations.Count <= 0)
         {
-            possLocations.Add(0, new Vector3(-1, ((float)-2.5), -1));
+            possLocations.Add(0, new Vector3(-1, ((float)-2.5), -1)); //down four
             possAng.Add(0, 90);
-            possLocations.Add(1, new Vector3(-1, ((float)-2), ((float).5)));
+            possLocations.Add(1, new Vector3(-1, ((float)-2), ((float).5))); //down three
             possAng.Add(1, 65);
-            possLocations.Add(2, new Vector3(-1, ((float)-1), ((float)1.5)));
+            possLocations.Add(2, new Vector3(-1, ((float)-1), ((float)1.5))); //down two
             possAng.Add(2, 40);
-            possLocations.Add(3, new Vector3(-1, ((float)-.25), 2));
+            possLocations.Add(3, new Vector3(-1, ((float).25), 2)); //down one
             possAng.Add(3, 20);
 
-            possLocations.Add(4, new Vector3(-1, ((float)1.5), 2));
+            possLocations.Add(4, new Vector3(-1, ((float)1.5), 2)); //main
             possAng.Add(4, 0);
 
-            possLocations.Add(5, new Vector3(-1, ((float)2.75), 2));
+            possLocations.Add(5, new Vector3(-1, ((float)2.75), 2)); //up one
             possAng.Add(5, -20);
-            possLocations.Add(6, new Vector3(-1, ((float)4), ((float)1.5)));
+            possLocations.Add(6, new Vector3(-1, ((float)4), ((float)1.5))); //up two
             possAng.Add(6, -40);
-            possLocations.Add(7, new Vector3(-1, ((float)5), ((float).5)));
+            possLocations.Add(7, new Vector3(-1, ((float)5), ((float).5))); //up three
             possAng.Add(7, -65);
-            possLocations.Add(8, new Vector3(-1, ((float)5.5), -1));
+            possLocations.Add(8, new Vector3(-1, ((float)5.5), -1)); //up four
             possAng.Add(8, -90);
         }
         target = this.transform;
