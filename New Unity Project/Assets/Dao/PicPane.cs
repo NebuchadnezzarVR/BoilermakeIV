@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 public class PicPane : MonoBehaviour {
@@ -15,18 +16,21 @@ public class PicPane : MonoBehaviour {
     //Currently incative. Will implement when movement becomes a possibility
 
 
-    void Start() {
-        
+    IEnumerator Start() {
+        return this.loadImage();
+        Debug.Log("after the fucking call");
     }
 
     public IEnumerator loadImage()
     {
+        Debug.Log("here first you bastard");
         Texture2D tex;
         tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
         WWW www = new WWW(url);
         yield return www;
         www.LoadImageIntoTexture(tex);
         GetComponent<Renderer>().material.mainTexture = tex;
+        Debug.Log("here you bastard");
 
 
     }
