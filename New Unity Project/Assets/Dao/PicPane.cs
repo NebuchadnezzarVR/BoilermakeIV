@@ -75,7 +75,8 @@ public class PicPane : MonoBehaviour {
             tex.Apply();
         }*/
         Debug.Log("Width: " + width + " Height: " + height);
-        transform.localScale = new Vector3((float)(width / 750.0), (float)(height / 800.0), .1f);
+        BoxCollider collider = GetComponent<BoxCollider>();
+        collider.size = new Vector3((float)(width / 750.0), (float)(height / 750.0), .1f);
         //transform.position = new Vector3((1-obj.transform.localScale.x)/2+Xi, (1-obj.transform.localScale.y) / 2 + Yi, Zi);
 
         GetComponent<Renderer>().material.mainTexture = tex;
