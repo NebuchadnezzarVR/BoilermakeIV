@@ -76,7 +76,18 @@ public class PicPane : MonoBehaviour {
         }*/
         Debug.Log("Width: " + width + " Height: " + height);
         BoxCollider collider = GetComponent<BoxCollider>();
-        collider.size = new Vector3((float)(width / 750.0), (float)(height / 750.0), .1f);
+        float baseValue = 750.0f;
+        float hValue = baseValue;
+        float wValue = baseValue;
+        if(height > width)
+        {
+            hValue += (height - width) * .65f;
+        } else if (width > height)
+        {
+            wValue += (width - height) * .65f;
+        }
+        
+        collider.size = new Vector3((float)(width / wValue), (float)(height / hValue), .1f);
         //transform.position = new Vector3((1-obj.transform.localScale.x)/2+Xi, (1-obj.transform.localScale.y) / 2 + Yi, Zi);
 
         GetComponent<Renderer>().material.mainTexture = tex;
