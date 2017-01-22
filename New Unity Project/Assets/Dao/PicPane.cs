@@ -48,7 +48,8 @@ public class PicPane : MonoBehaviour {
 
     public IEnumerator loadImage()
     {
-
+        var objectWidth = 750;
+        var objectHeight = 1000;
 
         Debug.Log("here first you bastard");
         Texture2D tex;
@@ -56,8 +57,28 @@ public class PicPane : MonoBehaviour {
         WWW www = new WWW(url);
         yield return www;
         www.LoadImageIntoTexture(tex);
-        GetComponent<Renderer>().material.mainTexture = tex;
+        var width = tex.width;
+        var height = tex.height;
+        
+       /* if (width > 750)
+        {
+            double scale = 750.0 / width;
+            height = (int)(scale * height);
+            tex.Resize(width, height);
+            tex.Apply();
+        }
+        if( height > 1000)
+        {
+            double scale = 750.0 / height;
+            width = (int)(scale * width);
+            tex.Resize(width, height);
+            tex.Apply();
+        }*/
+        Debug.Log("Width: " + width + " Height: " + height);
+        transform.localScale = new Vector3((float)(width / 750.0), (float)(height / 800), .1f);
+        //transform.position = new Vector3((1-obj.transform.localScale.x)/2+Xi, (1-obj.transform.localScale.y) / 2 + Yi, Zi);
 
+        GetComponent<Renderer>().material.mainTexture = tex;
     }
     // Update is called once per frame
     void Update()
