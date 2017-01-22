@@ -11,7 +11,7 @@ using System;
  // image from the documentation site.  It is then applied as the
  // texture on the GameObject.
  
-     public string url = "https://docs.unity3d.com/uploads/Main/ShadowIntro.png";
+     public string url = "http://scontent-ort2-1.cdninstagram.com/t51.2885-15/e35/13414336_641685176008067_1785445179_n.jpg?ig_cache_key=MTI2ODMyNTgwNDQxMzM1Mjc2OA%3D%3D.2&se=7";
      
      IEnumerator Start()
     {

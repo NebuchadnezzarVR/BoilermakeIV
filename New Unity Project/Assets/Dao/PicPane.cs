@@ -11,7 +11,7 @@ public class PicPane : MonoBehaviour {
     // texture on the GameObject.
     List<Vector3> possLocations = new List<Vector3>();
     List<int> possAng = new List<int>();
-    public string url = "https://docs.unity3d.com/uploads/Main/ShadowIntro.png"; //Will be depreciated as soon as ImageMode is implemented
+    public string url = "http://scontent-ort2-1.cdninstagram.com/t51.2885-15/e35/13414336_641685176008067_1785445179_n.jpg?ig_cache_key=MTI2ODMyNTgwNDQxMzM1Mjc2OA%3D%3D.2&se=7"; //Will be depreciated as soon as ImageMode is implemented
     public ImageModel myModel;
 
 
@@ -76,7 +76,7 @@ public class PicPane : MonoBehaviour {
     {
         currindex++;
         target.position = possLocations[currindex + 1];
-        target.eulerAngles = new Vector3(possAng[currindex], 0, 0);
+        target.eulerAngles = new Vector3(possAng[currindex], 0, 180);
         if((currindex == possLocations.Count) || (currindex == 0))
         {
             
@@ -87,7 +87,7 @@ public class PicPane : MonoBehaviour {
     public void moveToPos(int i)
     {
         target.position = possLocations[i];
-        target.eulerAngles = new Vector3(possAng[i],0,0);
+        target.eulerAngles = new Vector3(possAng[i],0,180);
         currindex = i;
     }
     public void setActive()
