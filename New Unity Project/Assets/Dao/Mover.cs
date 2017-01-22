@@ -38,6 +38,9 @@ public class Mover : MonoBehaviour {
         mainPane.setImageModel(allModels[r.Next() % allModels.Count]);
 
         allModels.Sort((x, y) => x.TimeTaken.CompareTo(y.TimeTaken));
+        int n = r.Next() % allModels.Count;
+        Debug.Log(n);
+        mainPane.setImageModel(allModels[n]);
 
         setInitalActiveModels();
 
