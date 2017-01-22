@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Touches : MonoBehaviour {
-    public PicPane mainPane;
-    public GameObject infoPane;
-    public List<ImageModel> allModels;
-
+   // public Mover move;
+   private int test = 0;
     // Use this for initialization
     void Start()
     {
         OVRTouchpad.Create();
         OVRTouchpad.TouchHandler += HandleTouchHandler;
+
+       // move = GameObject.FindGameObjectWithTag("MainCamera").GetComponent(typeof(Mover)) as Mover;
     }
 
     void HandleTouchHandler (object sender, System.EventArgs e)
@@ -19,7 +19,15 @@ public class Touches : MonoBehaviour {
         OVRTouchpad.TouchArgs touchArgs = (OVRTouchpad.TouchArgs)e;
         if (touchArgs.TouchType == OVRTouchpad.TouchEvent.SingleTap)
         {
-            
+            GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+        }
+        else if (touchArgs.TouchType == OVRTouchpad.TouchEvent.Up)
+        {
+            GetComponent<Renderer>().material.SetColor("_Color", Color.cyan);
+        }
+        else if (touchArgs.TouchType == OVRTouchpad.TouchEvent.Down)
+        {
+            GetComponent<Renderer>().material.SetColor("_Color", Color.green);
         }
     }
 	
