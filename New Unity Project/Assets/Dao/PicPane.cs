@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Dao;
 using UnityEngine;
 
 
@@ -27,7 +28,7 @@ public class PicPane : MonoBehaviour {
         yield return www;
         www.LoadImageIntoTexture(tex);
         GetComponent<Renderer>().material.mainTexture = tex;
-
+	    var s = ImageModelDao.Instnace.GetImageModels();
 
     }
     // Update is called once per frame
