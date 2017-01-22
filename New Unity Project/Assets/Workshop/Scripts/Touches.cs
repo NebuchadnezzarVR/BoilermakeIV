@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Touches : MonoBehaviour {
-   // public Mover move;
-   private int test = 0;
+    public Mover move;
     // Use this for initialization
     void Start()
     {
+        move = GameObject.FindGameObjectWithTag("MainCamera").GetComponent(typeof(Mover)) as Mover;
         OVRTouchpad.Create();
         OVRTouchpad.TouchHandler += HandleTouchHandler;
-
-       // move = GameObject.FindGameObjectWithTag("MainCamera").GetComponent(typeof(Mover)) as Mover;
     }
 
     void HandleTouchHandler (object sender, System.EventArgs e)
@@ -19,15 +17,19 @@ public class Touches : MonoBehaviour {
         OVRTouchpad.TouchArgs touchArgs = (OVRTouchpad.TouchArgs)e;
         if (touchArgs.TouchType == OVRTouchpad.TouchEvent.SingleTap)
         {
-            GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
+            //
         }
         else if (touchArgs.TouchType == OVRTouchpad.TouchEvent.Up)
         {
-            GetComponent<Renderer>().material.SetColor("_Color", Color.cyan);
+            move.nextPic();
         }
         else if (touchArgs.TouchType == OVRTouchpad.TouchEvent.Down)
         {
-            GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+            move.prevPic();
+        }
+        else if (touchArgs.TouchType == OVRTouchpad.TouchEvent.Right)
+        {
+            UnityEngine.VR.InputTracking.Recenter();
         }
     }
 	
