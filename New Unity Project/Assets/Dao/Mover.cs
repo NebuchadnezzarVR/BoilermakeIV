@@ -70,7 +70,7 @@ public class Mover : MonoBehaviour {
             if((activeTop-i) < allModels.Count)
             {
 
-                //activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
+                activeModels[activeModels.Count - i] = allModels[allModels.Count - i];
 
 
 
@@ -86,5 +86,10 @@ public class Mover : MonoBehaviour {
 
     }
 
-
+    public void newPic()
+    {
+        mainPane = GameObject.FindGameObjectWithTag("MainPane").GetComponent(typeof(PicPane)) as PicPane;
+        System.Random r = new System.Random();
+        mainPane.setImageModel(allModels[r.Next() % allModels.Count]);
+    }
 }
